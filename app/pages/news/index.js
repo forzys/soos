@@ -2,16 +2,10 @@
 import React, { Component } from 'react';
 import { View,Text } from 'react-native';
 import Fetch from '../../config/fetch'
+import ZhiHu from '../zhihu/index'
 
-import News from '../news/index'
-
-// import {  homeStyle as styles} from '../../config/styles'
-// import Icon from 'react-native-vector-icons/FontAwesome';
-// import {SwipeList,SwipeRow} from '../../compontents/index'
-
-class Home extends Component {
+class News extends Component{
     componentDidMount(){
-        // console.warn('err',Fetch)
         // Fetch('https://www.apiopen.top/journalismApi').then((res)=>{
         //     console.warn('res',res)
         // }).catch(err=>{
@@ -19,13 +13,15 @@ class Home extends Component {
         //     console.log('sdf')
         // })
     }
-
+    getList = ()=>{
+    }
     render() {
         return (
             <View>
-                <News />
+               <ZhiHu />
             </View>
         );
       }
 }
-export default Home
+
+export default News

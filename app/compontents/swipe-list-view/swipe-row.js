@@ -371,6 +371,7 @@ SwipeRow.propTypes = {
 	/**
 	 * Called when a swipe row is animating open. Used by the SwipeListView
 	 * to keep references to open rows.
+	 * 当滑动行的动画处于开启状态时调用
 	 */
 	onRowOpen: PropTypes.func,
 	/**
@@ -379,46 +380,57 @@ SwipeRow.propTypes = {
 	onRowDidOpen: PropTypes.func,
 	/**
 	 * TranslateX value for opening the row to the left (positive number)
+	 * 左滑X的偏移量(正数)
 	 */
 	leftOpenValue: PropTypes.number,
 	/**
 	 * TranslateX value for opening the row to the right (negative number)
+	 * 右滑X的偏移量(负数)
 	 */
 	rightOpenValue: PropTypes.number,
 	/**
 	 * TranslateX value for stop the row to the left (positive number)
+	 * 左侧侧滑X的最大偏移量(正数)
 	 */
 	stopLeftSwipe: PropTypes.number,
 	/**
 	 * TranslateX value for stop the row to the right (negative number)
+	 * 右侧侧侧滑X的最大偏移量(负数)
 	 */
 	stopRightSwipe: PropTypes.number,
 	/**
 	 * Friction for the open / close animation
+	 * 打开关闭动画的摩擦数
 	 */
 	friction: PropTypes.number,
 	/**
 	 * Tension for the open / close animation
+	 * 打开关闭动画的张力
 	 */
 	tension: PropTypes.number,
 	/**
 	 * Should the row be closed when it is tapped
+	 * 当按下一行时，关闭打开的行
 	 */
 	closeOnRowPress: PropTypes.bool,
 	/**
 	 * Disable ability to swipe the row left
+	 * 禁止向左滑动
 	 */
 	disableLeftSwipe: PropTypes.bool,
 	/**
 	 * Disable ability to swipe the row right
+	 * 禁止向右滑动
 	 */
 	disableRightSwipe: PropTypes.bool,
 	/**
 	 * Enable hidden row onLayout calculations to run always
+	 * 启动隐藏行实时onLayout计算（默认情况下，出于性能原因，仅在第一次onLayout计算隐藏行大小）
 	 */
 	recalculateHiddenLayout: PropTypes.bool,
 	/**
 	 * Called when a swipe row is animating closed
+	 * 当滑动行的动画处于关闭状态时调用
 	 */
 	onRowClose: PropTypes.func,
 	/**
@@ -431,24 +443,29 @@ SwipeRow.propTypes = {
 	style: ViewPropTypes.style,
 	/**
 	 * Should the row do a slide out preview to show that it is swipeable
+	 * 具有滑动预览效果
 	 */
 	preview: PropTypes.bool,
 	/**
 	 * Duration of the slide out preview animation
+	 * 预览持续时间
 	 */
 	previewDuration: PropTypes.number,
 	/**
 	 * TranslateX value for the slide out preview animation
 	 * Default: 0.5 * props.rightOpenValue
+	 * 打开侧滑动画快慢，Default: 0.5 * props.rightOpenValue
 	 */
 	previewOpenValue: PropTypes.number,
 	/**
 	 * The dx value used to detect when a user has begun a swipe gesture
+	 * 更改行的灵敏度
 	 */
 	directionalDistanceChangeThreshold: PropTypes.number,
 	/**
 	 * What % of the left/right openValue does the user need to swipe
 	 * past to trigger the row opening.
+	 * 滑动%触发行打开
 	 */
 	swipeToOpenPercent: PropTypes.number,
 	/**
