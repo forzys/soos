@@ -12,6 +12,12 @@ const swipeListStyle = function(){
         padding:15,
         marginTop:5,
     }, 
+    s.RowImg= {
+        width: 50, 
+        height: 50,
+        borderRadius:6,
+        marginRight:10
+    }, 
     s.RowBack= {
 		alignItems: 'center',
 		backgroundColor: '#8BC645',
@@ -20,7 +26,7 @@ const swipeListStyle = function(){
 		justifyContent: 'space-between',
         marginTop:5,
         padding:15,
-	}
+    }
     return StyleSheet.create(s)
 }()
 //首页样式
