@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { View,Text,Image,TouchableNativeFeedback } from 'react-native'
-import {SwipeList} from '../../compontents/index'
+import { SwipeList } from '../../compontents/index'
 import Fetch from '../../config/fetch'
 import {date} from '../../config/static'
 import { swipeListStyle } from '../../config/styles'

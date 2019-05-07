@@ -4,10 +4,8 @@ import { View,Text ,Alert,TouchableNativeFeedback} from 'react-native';
 import {WebView}   from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Fetch from '../../config/fetch'
-import ZhiHu from '../zhihu/index'
+import ZhiHu from './zhihu'
 import API from '../../config/apis'
-
-
 
 class News extends Component{
     constructor(props) {
@@ -37,6 +35,7 @@ class News extends Component{
         const body = `
         <html>
             <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
                 <link rel="stylesheet" href="${props.css}"/>
             </head>
             <body>

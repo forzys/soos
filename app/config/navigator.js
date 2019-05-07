@@ -51,7 +51,7 @@ const setting = {
     lazy: true,//懒加载
     swipeEnabled: true,//滑动切换
     tabBarPosition: 'bottom',//tab bar的位置
-    initialRouteName: 'Home',//默认router
+    initialRouteName: 'Fun',//默认router
     pressOpacity: 0.7,
 
     tabBarOptions: {
