@@ -44,18 +44,16 @@ class Fun extends Component {
     render() {
         const { active } = this.state
         return (
-            <View style={{marginTop:5}}>
-                {
+            <View style={{marginTop:5,flex:1}}>
+                {/* {
                     temp.map( res => (
                         <TouchableNativeFeedback key={res.key}
                         onPress={()=>{this.setState({active:res.key==active?0:res.key})}}>
                             <Text style={{fontSize:17, margin:5, borderRadius:3, borderWidth:1,borderColor:'#eee', textAlign:'center',padding:10}}> {res.title} </Text>
                         </TouchableNativeFeedback>
                     ))
-                }
-                <View>
-                    <Text>hello</Text>
-                </View>
+                } */}
+                <Wallpaper />
             </View>
         );
       }
