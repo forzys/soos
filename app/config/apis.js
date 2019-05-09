@@ -4,13 +4,15 @@ const API = {
         getNew:`https://news-at.zhihu.com/api/4/news/`,//3892357
         oldNew:`https://news-at.zhihu.com/api/4/news/before/`//20131119
     },
-   
     wallpaper:{
         search:'http://so.picasso.adesk.com/v1/',
         wall:'http://service.picasso.adesk.com/v1/'
+    },
+    article:{
+        today:'https://interface.meiriyiwen.com/article/today?dev=1',
+        random:'https://interface.meiriyiwen.com/article/random?dev=1',
+        day:'https://interface.meiriyiwen.com/article/day?dev=1&date=',
     }
-
-
 }
 
 export default API

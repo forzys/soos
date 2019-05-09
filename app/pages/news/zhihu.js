@@ -77,10 +77,6 @@ class zhihuNews extends Component{
     render() {
         return (
             <View>
-                <Text style={{padding:15,margin:10}}>
-                    知乎日报 
-                </Text>
-
                <SwipeList
                     useSectionList
                     disableRightSwipe

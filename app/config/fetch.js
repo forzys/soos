@@ -10,22 +10,26 @@ let common_url = '';  //服务器地址
  */
 function fetchRequest(url, params = '', type='json', token){
     let header = {
-        "Content-Type": "application/json;charset=UTF-8",
-        "accesstoken":token  //用户登陆后返回的token，某些涉及用户数据的接口需要在header中加上token
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        // "Content-Type": "application/json;charset=UTF-8",
+        // "Content-Type":"application/x-www-form-urlencoded",
+        // "accesstoken":token  //用户登陆后返回的token，某些涉及用户数据的接口需要在header中加上token
     };
     // console.log('request url:',url,params);  //打印请求参数
     if(params == ''){   //如果网络请求中带有参数
         return new Promise(function (resolve, reject) {
-            fetch(common_url + url, {
-                method: 'get',
-                headers: header
-            }).then((response) => response[type]() )
+            // {
+            //     method: 'get',
+            //     headers: header
+            // }
+            fetch(common_url + url).then( (response) => response[type]() )
                 .then((responseData) => {
-                    // console.log('res:',url,responseData);  //网络请求成功返回的数据
+                    // console.warn('res:',url,responseData);  //网络请求成功返回的数据
                     resolve(responseData);
                 })
                 .catch( (err) => {
-                    // console.log('err:',url, err);     //网络请求失败返回的数据        
+                    console.warn('err:',url, err);     //网络请求失败返回的数据        
                     reject(err);
                 });
         });

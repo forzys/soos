@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
-import { View,Text ,Alert,TouchableNativeFeedback} from 'react-native';
-import {WebView}   from 'react-native-webview';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View,Text,TouchableNativeFeedback} from 'react-native';
+import ViewHTML from './viewHTML'
 import Fetch from '../../config/fetch'
 import ZhiHu from './zhihu'
 import API from '../../config/apis'
@@ -17,7 +16,8 @@ class News extends Component{
             title:''
         };
     }
-    isActiveShow = (id)=>{
+
+    isActiveShow = ( id )=>{
         Fetch( API.zhihu.getNew+id).then(res=>{
             if(res){
                 this.setState({
@@ -31,52 +31,49 @@ class News extends Component{
             console.error(err)
         })
     }
-    viewHTML = (props)=>{
-        const body = `
-        <html>
-            <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-                <link rel="stylesheet" href="${props.css}"/>
-            </head>
-            <body>
-                ${props.body}
-            </body>
-        </html>`
-        return (
-            <View style={{width:'100%',height:'100%'}}>
-                <View style={{ margin:10,display:'flex',flexDirection:'row',}}>
-                    <TouchableNativeFeedback style={{ textAlign:'left' }} 
-                        onPress={()=>{this.setState({isActive:false})}}>
-                        <Icon name="reply" size={25} color="#ccc" />
-                    </TouchableNativeFeedback>
-                    <Text numberOfLines={1} style={{width:'90%',paddingLeft:20,textAlign:'center',fontSize:18}}>
-                        {props.title}
-                    </Text>
-                </View>
-                <WebView
-                    source={{ html:body, baseUrl:''}}//必须加baseUrl 否则在低版本的android系统会报错
-                    // injectedJavaScript={BaseScript}//设置高度 被内容撑开
-                    originWhitelist={['*']}
-                    automaticallyAdjustContentInsets={false}
-                    scalesPageToFit={false}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    startInLoadingState={true}
-                    decelerationRate="normal"
-                    style={{width:'100%',height:'100%'}}
-                />
-            </View>
-        )
+   
+    getArticle= ()=>{
+        // console.warn(API.article.today)
+        // Fetch(API.article.today).then(res=>{
+        //    console.warn(res)
+        // }).catch(err=>{
+        //     console.error(err)
+        // })
+
+        const url = `https://interface.meiriyiwen.com/article/today?dev=1`
+        // const url = 'https://interface.meiriyiwen.com'
+        // https://news-at.zhihu.com/api/4/news/latest
+        // const url ='https://news-at.zhihu.com/api/4/news/latest'
+        // fetch( url )
+        // .then(res=>{
+        //     console.warn(res.text())
+        //     return res.json()})
+        // .then(res=>{console.warn(res)})
+        // .catch(err=>console.warn(err))
     }
+
     render() {
         const { isActive, body, css, title } = this.state
-        const ViewHTML = this.viewHTML
+
         return (
             <View>
                 <View style={!!isActive?{width:'100%',height:'100%'}:{width:0,height:0}}>
-                    <ViewHTML body={body} css={css} title={title} />
+                    <ViewHTML body={body} css={css} title={title} back={()=>{this.setState({isActive:false})}}/>
                 </View>
                 <View style={!isActive?{width:'100%',height:'100%'}:{width:0,height:0}}>
+                    <View style={{display:'flex',flexDirection:'row',borderBottomWidth:1,borderBottomColor:'#fff'}}>
+                        <TouchableNativeFeedback>
+                            <Text style={{padding:15,margin:10}}>
+                                知乎日报 
+                            </Text>
+                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback onPress={this.getArticle}>
+                            <Text style={{padding:15,margin:10}}>
+                                每日一文 
+                            </Text>
+                        </TouchableNativeFeedback>
+                    </View>
+
                     <ZhiHu isShow={this.isActiveShow} />
                 </View>
             </View>
