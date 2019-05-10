@@ -33,7 +33,7 @@ class zhihuNews extends Component{
     }
     getData =(days,day)=>{
         const list = this.state.list
-        Fetch( API.zhihu.oldNew + day ).then(res=>{
+        Fetch( {url:API.zhihu.oldNew + day} ).then(res=>{
             const arr = []
             Array.isArray(res.stories) &&
             res.stories.forEach(item=> { //遍历数据

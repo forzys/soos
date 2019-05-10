@@ -73,7 +73,8 @@ class Wallpaper extends Component {
 
     //获取数据函数
     getList = (url,api='wall') => {
-        Fetch(API.wallpaper[api] + url).then(res=>{
+        Fetch({ url:API.wallpaper[api]+url })
+        .then(res=>{
             const { order, imgList } = this.state
             let arr = []
             const list = imgList

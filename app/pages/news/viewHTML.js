@@ -29,6 +29,7 @@ const view = (props)=>{
             <WebView
                 source={{ html:body, baseUrl:''}}//必须加baseUrl 否则在低版本的android系统会报错
                 // injectedJavaScript={BaseScript}//设置高度 被内容撑开
+                
                 originWhitelist={['*']}
                 automaticallyAdjustContentInsets={false}
                 scalesPageToFit={false}
@@ -36,6 +37,7 @@ const view = (props)=>{
                 domStorageEnabled={true}
                 startInLoadingState={true}
                 decelerationRate="normal"
+                
                 style={{width:'100%',height:'100%'}}
             />
         </View>

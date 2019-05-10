@@ -13,21 +13,21 @@ const navigator = {
     Home: {
         screen: HomeTab,
         navigationOptions: () => ({
-        tabBarLabel: '首页',
+        tabBarLabel: '新闻',
         tabBarIcon:(obj)=>(<Icon name="home" size={25} color={obj.tintColor} />)
         }),
     },
     Fun: {
         screen: FunTab,
         navigationOptions: () => ({
-        tabBarLabel: '娱乐',
+        tabBarLabel: '壁纸',
         tabBarIcon:(obj)=>(<Icon name="heart-o" size={25} color={obj.tintColor} />)
         })
     },
-    Discount:{
+    Novel:{
         screen: DiscountTab,
         navigationOptions: () => ({
-        tabBarLabel: '优惠',
+        tabBarLabel: '小说',
         tabBarIcon:(obj)=>(<Icon name="star-o" size={25} color={obj.tintColor} />)
         })
     },
@@ -51,7 +51,7 @@ const setting = {
     lazy: true,//懒加载
     swipeEnabled: true,//滑动切换
     tabBarPosition: 'bottom',//tab bar的位置
-    initialRouteName: 'Fun',//默认router
+    initialRouteName: 'Novel',//默认router
     pressOpacity: 0.7,
 
     tabBarOptions: {

@@ -12,6 +12,9 @@ const API = {
         today:'https://interface.meiriyiwen.com/article/today?dev=1',
         random:'https://interface.meiriyiwen.com/article/random?dev=1',
         day:'https://interface.meiriyiwen.com/article/day?dev=1&date=',
+    },
+    book:{
+        search:'http://api.zhuishushenqi.com/book/fuzzy-search?start=0&limit=10&query='
     }
 }
 
