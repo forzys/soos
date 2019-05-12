@@ -75,6 +75,7 @@ class Wallpaper extends Component {
     getList = (url,api='wall') => {
         Fetch({ url:API.wallpaper[api]+url })
         .then(res=>{
+            
             const { order, imgList } = this.state
             let arr = []
             const list = imgList

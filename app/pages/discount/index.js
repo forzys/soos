@@ -50,9 +50,16 @@ class Discount extends Component {
     NovelList=(list)=>{
         const data = list.item
         return(
-            <View style={{width:'100%',display:'flex',flexDirection:'row'}}>
-                <Image style={{width:50,height:50}} source={{uri: data.img}} />
-                <Text>{data.title}</Text>
+            <View style={{width:'100%',margin:5,display:'flex',flexDirection:'row'}}>
+                <View style={{flex:5}}>
+                    <Image style={{width:100,height:150,padding:5,borderRadius:6}} source={{uri: data.img}} />
+                </View>
+                <View style={{flex:14,display:'flex',flexDirection:'column',justifyContent:'center'}}>
+                    <Text numberOfLines={1} style={{fontSize:16,color:'#333',margin:5,}}>{data.title}</Text>
+                    <Text>{data.cat} / {data.author}</Text>
+                    <Text>最新：{data.lastChapter}</Text>
+                    <Text numberOfLines={2} style={{display:'flex',fontSize:12,color:'#333'}}>{data.info}</Text>
+                 </View>
             </View>
         )
     }
@@ -64,7 +71,7 @@ class Discount extends Component {
                     <Text>Search & 小说</Text>
                     <View>
                         <TextInput 
-                            placeholder="输入 音乐名称 搜索"
+                            placeholder="输入 关键字 搜索"
                             placeholderTextColor="#ccc"
                             style={{ borderBottomWidth:1,borderBottomColor:'#ccc',paddingBottom:3}}
                             spellCheck={ false }

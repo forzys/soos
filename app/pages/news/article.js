@@ -122,7 +122,7 @@ class zhihuNews extends Component{
                                     style={swipeListStyle.RowImg}
                                     source={{uri: data.item.image}}
                                 />
-                                <Text numberOfLines={1}>{data.item.title}</Text>
+                                <Text>{data.item.title}</Text>
                             </View>
                         </TouchableNativeFeedback>
                     )}

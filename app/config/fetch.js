@@ -12,21 +12,18 @@ let common_url = '';  //服务器地址
 
 
 function fetchRequest(param){
-    const { url, header, method='get',type='json' } = param
-
-    const heade = new Headers()
-    heade
+    const { url, heade={}, method='get',type='json' } = param
     let header = {
         'Accept': 'application/json',
         "Content-Type": "application/json;charset=UTF-8",
-        ...header,
+        ...heade,
     };
-    if( method.toLowerCase === 'get'){
+    if( method.toLowerCase() === 'get'){
         return new Promise(function (resolve, reject) {
             fetch(unescape(url),{
                 method:'GET',headers:header
             })
-            .then((response)=>response[type]())
+            .then((response) => response[type]())
             .then((responseData) => {
                 resolve(responseData);
             })

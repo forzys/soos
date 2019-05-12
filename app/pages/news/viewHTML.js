@@ -4,12 +4,12 @@ import {WebView}   from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const view = (props)=>{
-
     const body = `
     <html>
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
             <link rel="stylesheet" href="${props.css}"/>
+            <style type="text/css">${props.style}</style>
         </head>
         <body>
             ${props.body}
@@ -29,7 +29,6 @@ const view = (props)=>{
             <WebView
                 source={{ html:body, baseUrl:''}}//必须加baseUrl 否则在低版本的android系统会报错
                 // injectedJavaScript={BaseScript}//设置高度 被内容撑开
-                
                 originWhitelist={['*']}
                 automaticallyAdjustContentInsets={false}
                 scalesPageToFit={false}

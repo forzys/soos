@@ -13,30 +13,41 @@ class News extends Component{
             isActive:false,
             body:'',
             css:'',
-            title:''
+            title:'',
         };
     }
-
-    isActiveShow = ( id )=>{
+    isZhihuShow = ( id )=>{
         Fetch({url:API.zhihu.getNew+ id}).then(res=>{
             if(res){
                 this.setState({
-                    body:res.body,
+                    style:'',
+                    isActive:true,
+                    body: res.body,
                     title:res.title,
                     css:res.css?res.css[0]:'',
-                    isActive:true,
                 })
             }
         }).catch(err=>{
             console.error(err)
         })
     }
-    getArticle=()=>{
+    isArticleShow=()=>{
         Fetch({
-            url:'https://interface.meiriyiwen.com/article/today?dev=1',
-            header:{'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'}
-    }).then(res=>{
-            console.warn('res',res)
+            url:API.article.today,
+            heade:{'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'}
+        }).then(res=>{
+            const body = `
+            <h2 style="text-align:center">${res.data.title}</h2>
+            <p style="text-align:center">${res.data.author}</p>
+            ${res.data.content}`
+            res&&
+            res.data&&
+            this.setState({
+                css: '',
+                body,
+                isActive: true,
+                title: res.data.title,
+            })
         }).catch(err=>{
             console.warn('err',err)
         })
@@ -46,8 +57,14 @@ class News extends Component{
         return (
             <View>
                 <View style={!!isActive?{width:'100%',height:'100%'}:{width:0,height:0}}>
-                    <ViewHTML body={body} css={css} title={title} back={()=>{this.setState({isActive:false})}} />
+                    <ViewHTML 
+                        body={body} 
+                        css={css} 
+                        title={title}
+                        back={()=>{this.setState({isActive:false})}} 
+                    />
                 </View>
+
                 <View style={!isActive?{width:'100%',height:'100%'}:{width:0,height:0}}>
                     <View style={{display:'flex',flexDirection:'row',borderBottomWidth:1,borderBottomColor:'#fff'}}>
                         <TouchableNativeFeedback>
@@ -55,13 +72,13 @@ class News extends Component{
                                 知乎日报 
                             </Text>
                         </TouchableNativeFeedback>
-                        <TouchableNativeFeedback onPress={this.getArticle}>
+                        <TouchableNativeFeedback onPress={this.isArticleShow}>
                             <Text style={{padding:15,margin:10}}>
                                 每日一文 
                             </Text>
                         </TouchableNativeFeedback>
                     </View>
-                    <ZhiHu isShow={this.isActiveShow} />
+                    <ZhiHu isShow={this.isZhihuShow} />
                 </View>
             </View>
         );
